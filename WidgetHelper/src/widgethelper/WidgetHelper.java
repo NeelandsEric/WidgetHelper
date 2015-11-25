@@ -6,7 +6,7 @@
 package widgethelper;
 
 /**
- *
+ * Main
  * @author EricGummerson
  */
 public class WidgetHelper implements Runnable{
