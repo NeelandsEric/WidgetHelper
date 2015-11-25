@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="dirGroup">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Widget Helper"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panel_Fields" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" pref="414" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="panel_Fields" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jScrollPane2" min="-2" pref="333" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="171" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="tf_Output">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="tf_Input">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="{&#xa;  &quot;widget_class&quot;: &quot;Digital%20Value%20-%20Leds&quot;,&#xa;  &quot;widget_subclass&quot;: &quot;10&quot;,&#xa;  &quot;w_x&quot;: &quot;`%XPOS%`&quot;,&#xa;  &quot;w_y&quot;: &quot;`%YPOS%`&quot;,&#xa;  &quot;station&quot;: &quot;147&quot;,&#xa;  &quot;io_id&quot;: &quot;`%IO_ID%`&quot;,&#xa;    &quot;code&quot;: &quot;&lt;div style=\u005c&quot;/**main_holder**/padding:5px;\u005c&quot;&gt;\u005cn\u005ct\u005cn\u005ct&lt;span id=\u005c&quot;holder_1448309198\u005c&quot; style=\u005c&quot;text-align:center; display:inline-block;\u005c&quot;&gt;&lt;/span&gt;\u005cn\u005ct&lt;span style=\u005c&quot;/**Label**/padding-left:5px; font-size:14px; font-family:Arial;\u005c&quot;&gt;&lt;!--*Label*--&gt;&lt;!----&gt;&lt;/span&gt;\u005cn&lt;/div&gt;\u005cn&lt;script&gt;try {\u005cntry {\u005cntry {\u005cn\u005cn  var server=&apos;get_value&apos;;\u005cn  var io_id=`%IO_ID%`;\u005cn\u005ctvar val_source=io_id;\u005cn\u005ctvar widget_help={\u005cn\u005ct\u005ct\u005c&quot;main_help\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;Display a digital input&apos;s value.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;Afi&#x219;eaz&#x103; valoarea unei intr&#x103;ri digitale.\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;OnColor\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The color of the LED when the input&apos;s value is 1. The colour&apos;s name should be written here!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;Culoarea LED-ului c&#xe2;nd intrarea este pe 1.  Scrieti aici numele culorii!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;60px\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;OffColor\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The color of the LED when the input&apos;s value is 0. The colour&apos;s name should be written here!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;Culoarea LED-ului c&#xe2;nd intrarea este pe 0. Scrieti aici numele culorii!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;60px\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;ErrColor\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The color of the LED when there&apos;s an error. The colour&apos;s name should be written here!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;Culoarea LED-ului c&#xe2;nd apare o eroare. Scrieti aici numele culorii!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;60px\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;LEDHeight\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The LED&apos;s height, measured in pixels.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;&#xce;n&#x103;l&#x21b;imea LED-ului, m&#x103;surat&#x103; &#xee;n pixeli.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;30px\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;LEDWidth\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The LED&apos;s width, measured in pixels.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;L&#x103;&#x21b;imea LED-ului, m&#x103;surat&#x103; &#xee;n pixeli.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;30px\u005c&quot;\u005cn\u005ct\u005ct}\u005cn\u005ct};\u005cn\u005cn\u005ctvar editable_params={\u005cn\u005ct\u005ct\u005c&quot;OnColor\u005c&quot;:\u005c&quot;green\u005c&quot;,\u005cn\u005ct\u005ct\u005c&quot;OffColor\u005c&quot;:\u005c&quot;grey\u005c&quot;,\u005cn\u005ct\u005ct\u005c&quot;ErrColor\u005c&quot;:\u005c&quot;red\u005c&quot;,\u005cn\u005ct\u005ct\u005c&quot;LEDHeight\u005c&quot;:20,\u005cn\u005ct\u005ct\u005c&quot;LEDWidth\u005c&quot;:20\u005cn\u005ct};\u005cn  var params={\u005cn    \u005c&quot;color_on\u005c&quot;:\u005c&quot;green\u005c&quot;,\u005cn    \u005c&quot;color_off\u005c&quot;:\u005c&quot;grey\u005c&quot;,\u005cn    \u005c&quot;color_err\u005c&quot;:\u005c&quot;red\u005c&quot;,\u005cn    \u005c&quot;width\u005c&quot;:10,\u005cn    \u005c&quot;height\u005c&quot;:10,\u005cn    \u005c&quot;light_width\u005c&quot;:20,\u005cn    \u005c&quot;light_height\u005c&quot;:20,\u005cn\u005ct\u005ct\u005c&quot;interval\u005c&quot;:5000};\u005cn\u005ctparams.color_on=editable_params.OnColor;\u005cn\u005ctparams.color_off=editable_params.OffColor;\u005cn\u005ctparams.color_err=editable_params.ErrColor;\u005cn\u005ctparams.width=editable_params.LEDWidth;\u005cn\u005ctparams.height=editable_params.LEDHeight;\u005cn\u005ctparams.light_width=Math.round((editable_params.LEDWidth * 18) / 15);\u005cn\u005ctparams.light_height=Math.round((editable_params.LEDHeight * 18) / 15);\u005cn\u005ctnew led(&apos;holder_1448309198&apos;, server, val_source, params);\u005cn\u005cn}catch(e){\u005cn\u005ctalert(e);\u005cn}\u005cn\u005cn}catch(e){\u005cn\u005ctalert(e);\u005cn}\u005cn\u005cn}catch(e){\u005cn\u005ctalert(e);\u005cn}\u005cn&lt;/script&gt;&quot;&#xa;}" containsInvalidXMLChars="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="panel_Fields">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel3" min="-2" pref="64" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ftf_Ios" min="-2" pref="69" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="checkPos" min="-2" pref="89" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel2" min="-2" pref="64" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="ftf_Cols" min="-2" pref="69" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" pref="64" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="ftf_Rows" min="-2" pref="69" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel5" min="-2" pref="64" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="ftf_startYpos" min="-2" pref="69" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel7" min="-2" pref="89" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel4" min="-2" pref="64" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="ftf_startXpos" min="-2" pref="69" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel6" min="-2" pref="89" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="tf_Xinc" pref="209" max="32767" attributes="0"/>
+                              <Component id="tf_Yinc" alignment="1" max="32767" attributes="0"/>
+                              <Component id="posProblems" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jScrollPane3" min="-2" pref="220" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jButton1" min="-2" pref="99" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="rb_right" min="-2" max="-2" attributes="0"/>
+                              <Component id="rb_down" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jScrollPane4" pref="0" max="32767" attributes="0"/>
+                              <Component id="generate" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel4" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="ftf_startXpos" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="tf_Xinc" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="ftf_Cols" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel5" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="ftf_startYpos" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jLabel7" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="tf_Yinc" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="ftf_Rows" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel3" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="ftf_Ios" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="checkPos" max="32767" attributes="0"/>
+                      <Component id="posProblems" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="rb_down" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          <Component id="rb_right" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="generate" min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane4" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jButton1" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Rows"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cols"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="ftf_Rows">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="ftf_Cols">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="4"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Num Ios"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="ftf_Ios">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="10"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Start X Pos"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="ftf_startXpos">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="100"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel5">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Start Y Pos"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="ftf_startYpos">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format format="#0" subtype="-1" type="0"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="200"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="X Increments"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel7">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Y Increments"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="tf_ios">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="10"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JList" name="list_io">
+              <Properties>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="List ios"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_Xinc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="100,85,120"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_Yinc">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="80,60,120"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="posProblems">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Problems:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="checkPos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Check"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkPosActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_down">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="dirGroup"/>
+            </Property>
+            <Property name="selected" type="boolean" value="true"/>
+            <Property name="text" type="java.lang.String" value="Down then Right"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_right">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="dirGroup"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Right then Down"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="generate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Generate"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
