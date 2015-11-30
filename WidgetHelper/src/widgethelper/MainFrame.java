@@ -89,8 +89,62 @@ public class MainFrame extends javax.swing.JFrame {
                                 //System.out.println("Ios: " + ioIds.length + "\tCount: " + count);
                             }
                         }
-                        startY = Integer.parseInt(ftf_startYpos.getText());
+                        
                         startX += xIncrement;
+                        startY = Integer.parseInt(ftf_startYpos.getText());
+                        
+                    }
+                } else {
+                    // right then down
+                    String line;
+                    int xIncrement, yIncrement;
+                    int count = 0;
+
+                    for (int r = 0; r < row; r++) {
+                        // Get the x increment
+                        // Get the y increment
+                        if (r == 0) {
+                            yIncrement = 0;
+                        } else if (yInc.length == 1) {
+                            yIncrement = yInc[0];
+                        } else {
+                            if (r < yInc.length) {
+                                yIncrement = yInc[r - 1];
+                            } else {
+                                yIncrement = yInc[yInc.length - 1];
+                            }
+                        }
+
+                        for (int c = 0; c < col; c++) {
+
+                            if (count < ioIds.length) {
+                                if (c == 0) {
+                                    xIncrement = 0;
+                                } else if (xInc.length == 1) {
+                                    xIncrement = xInc[0];
+                                } else {
+                                    if (c < xInc.length) {
+                                        xIncrement = xInc[c - 1];
+                                    } else {
+                                        xIncrement = xInc[xInc.length - 1];
+
+                                    }
+                                }
+                                line = String.valueOf(ioIds[count]) + ",";
+                                line += String.valueOf(startX + xIncrement) + ",";
+                                line += String.valueOf(startY + yIncrement);
+                                listString[count] = line;
+                                list.addElement(line);
+                                startX += xIncrement;
+                                count++;
+                            } else {
+                                //System.out.println("Ios: " + ioIds.length + "\tCount: " + count);
+                            }
+                        }
+                        
+                        startX = Integer.parseInt(ftf_startXpos.getText());
+                        startY += yIncrement;
+                       
                     }
                 }
 
@@ -202,6 +256,7 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         dirGroup = new javax.swing.ButtonGroup();
+        jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tf_Output = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -231,6 +286,9 @@ public class MainFrame extends javax.swing.JFrame {
         rb_down = new javax.swing.JRadioButton();
         rb_right = new javax.swing.JRadioButton();
         generate = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+
+        jLabel8.setText("jLabel8");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Widget Helper");
@@ -422,6 +480,10 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Widget Helper");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -434,11 +496,17 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(392, 392, 392)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(148, 148, 148)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panel_Fields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -467,9 +535,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
         // TODO add your handling code here:
-        if (!gen) {
-            update();
-        }
+        
+        update();
+        
 
         if (gen) {
 
@@ -505,7 +573,7 @@ public class MainFrame extends javax.swing.JFrame {
             StringSelection stringSelection = new StringSelection(tf_Output.getText());
             Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
             clpbrd.setContents(stringSelection, null);
-        }else {
+        } else {
             posProblems.setText("Fix before generating again");
         }
     }//GEN-LAST:event_generateActionPerformed
@@ -528,6 +596,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
