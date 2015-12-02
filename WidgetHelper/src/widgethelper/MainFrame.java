@@ -168,27 +168,38 @@ public class MainFrame extends javax.swing.JFrame {
 
             int numIos = Integer.parseInt(ftf_Ios.getText());
             String[] ios = text.split(",");
-
+           
             // Generate a list
-            if (ios.length == 1 && ios.length != numIos) {
-                System.out.println("1 variable");
+            if (ios.length == 1 && numIos != 1) {
+                System.out.println("Generate multiple IOS variable");
                 int startIo = Integer.parseInt(ios[0]);
                 ioIds = new int[numIos];
                 for (int i = 0; i < numIos; i++) {
                     ioIds[i] = (startIo + i);
                     list.addElement(startIo + i);
                 }
-            } else if (ios.length == 1 && ios.length == numIos) {
-                ioIds = new int[numIos];
+            } else if (ios.length == 1) {
+                System.out.println("1 IO");
+                ioIds = new int[numIos];                
                 ioIds[0] = Integer.parseInt(ios[0]);
                 list.addElement(ios[0]);
 
             } else {
+                System.out.println("Custom IOS");
+                if(numIos > ios.length){
+                    numIos = ios.length;
+                    ftf_Ios.setText(String.valueOf(ios.length));
+                }else if(numIos < ios.length){
+                    numIos = ios.length;
+                    ftf_Ios.setText(String.valueOf(ios.length));
+                }
+                
+                
                 ioIds = new int[numIos];
-
+                int c = 0;
                 for (String s : ios) {
                     list.addElement(s);
-                    ioIds[0] = Integer.parseInt(s);
+                    ioIds[c++] = Integer.parseInt(s);
                 }
             }
             list_io.setModel(list);
