@@ -163,11 +163,18 @@ public class MainFrame extends javax.swing.JFrame {
     public boolean checkIos() {
 
         String text = tf_ios.getText();
+        
+        System.out.println(text.split("\n")[0]);
         if (!text.isEmpty()) {
             list = new DefaultListModel();
 
             int numIos = Integer.parseInt(ftf_Ios.getText());
-            String[] ios = text.split(",");
+            String[] ios;
+            if(text.contains(",")){
+                ios = text.split(",");
+            }else {
+                ios = text.split("\n");
+            }
            
             // Generate a list
             if (ios.length == 1 && numIos != 1) {
@@ -298,6 +305,8 @@ public class MainFrame extends javax.swing.JFrame {
         rb_right = new javax.swing.JRadioButton();
         generate = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jLabel8.setText("jLabel8");
 
@@ -305,10 +314,12 @@ public class MainFrame extends javax.swing.JFrame {
         setTitle("Widget Helper");
 
         tf_Output.setColumns(20);
+        tf_Output.setLineWrap(true);
         tf_Output.setRows(5);
         jScrollPane1.setViewportView(tf_Output);
 
         tf_Input.setColumns(20);
+        tf_Input.setLineWrap(true);
         tf_Input.setRows(5);
         tf_Input.setText("{\n  \"widget_class\": \"Digital%20Value%20-%20Leds\",\n  \"widget_subclass\": \"10\",\n  \"w_x\": \"`%XPOS%`\",\n  \"w_y\": \"`%YPOS%`\",\n  \"station\": \"147\",\n  \"io_id\": \"`%IO_ID%`\",\n    \"code\": \"<div style=\\\"/**main_holder**/padding:5px;\\\">\\n\\t\\n\\t<span id=\\\"holder_1448309198\\\" style=\\\"text-align:center; display:inline-block;\\\"></span>\\n\\t<span style=\\\"/**Label**/padding-left:5px; font-size:14px; font-family:Arial;\\\"><!--*Label*--><!----></span>\\n</div>\\n<script>try {\\ntry {\\ntry {\\n\\n  var server='get_value';\\n  var io_id=`%IO_ID%`;\\n\\tvar val_source=io_id;\\n\\tvar widget_help={\\n\\t\\t\\\"main_help\\\":{\\n\\t\\t\\t\\\"en\\\":\\\"Display a digital input's value.\\\",\\n\\t\\t\\t\\\"ro\\\":\\\"Afișează valoarea unei intrări digitale.\\\"\\n\\t\\t},\\n\\t\\t\\\"OnColor\\\":{\\n\\t\\t\\t\\\"en\\\":\\\"The color of the LED when the input's value is 1. The colour's name should be written here!\\\",\\n\\t\\t\\t\\\"ro\\\":\\\"Culoarea LED-ului când intrarea este pe 1.  Scrieti aici numele culorii!\\\",\\n\\t\\t\\t\\\"width\\\":\\\"60px\\\"\\n\\t\\t},\\n\\t\\t\\\"OffColor\\\":{\\n\\t\\t\\t\\\"en\\\":\\\"The color of the LED when the input's value is 0. The colour's name should be written here!\\\",\\n\\t\\t\\t\\\"ro\\\":\\\"Culoarea LED-ului când intrarea este pe 0. Scrieti aici numele culorii!\\\",\\n\\t\\t\\t\\\"width\\\":\\\"60px\\\"\\n\\t\\t},\\n\\t\\t\\\"ErrColor\\\":{\\n\\t\\t\\t\\\"en\\\":\\\"The color of the LED when there's an error. The colour's name should be written here!\\\",\\n\\t\\t\\t\\\"ro\\\":\\\"Culoarea LED-ului când apare o eroare. Scrieti aici numele culorii!\\\",\\n\\t\\t\\t\\\"width\\\":\\\"60px\\\"\\n\\t\\t},\\n\\t\\t\\\"LEDHeight\\\":{\\n\\t\\t\\t\\\"en\\\":\\\"The LED's height, measured in pixels.\\\",\\n\\t\\t\\t\\\"ro\\\":\\\"Înălțimea LED-ului, măsurată în pixeli.\\\",\\n\\t\\t\\t\\\"width\\\":\\\"30px\\\"\\n\\t\\t},\\n\\t\\t\\\"LEDWidth\\\":{\\n\\t\\t\\t\\\"en\\\":\\\"The LED's width, measured in pixels.\\\",\\n\\t\\t\\t\\\"ro\\\":\\\"Lățimea LED-ului, măsurată în pixeli.\\\",\\n\\t\\t\\t\\\"width\\\":\\\"30px\\\"\\n\\t\\t}\\n\\t};\\n\\n\\tvar editable_params={\\n\\t\\t\\\"OnColor\\\":\\\"green\\\",\\n\\t\\t\\\"OffColor\\\":\\\"grey\\\",\\n\\t\\t\\\"ErrColor\\\":\\\"red\\\",\\n\\t\\t\\\"LEDHeight\\\":20,\\n\\t\\t\\\"LEDWidth\\\":20\\n\\t};\\n  var params={\\n    \\\"color_on\\\":\\\"green\\\",\\n    \\\"color_off\\\":\\\"grey\\\",\\n    \\\"color_err\\\":\\\"red\\\",\\n    \\\"width\\\":10,\\n    \\\"height\\\":10,\\n    \\\"light_width\\\":20,\\n    \\\"light_height\\\":20,\\n\\t\\t\\\"interval\\\":5000};\\n\\tparams.color_on=editable_params.OnColor;\\n\\tparams.color_off=editable_params.OffColor;\\n\\tparams.color_err=editable_params.ErrColor;\\n\\tparams.width=editable_params.LEDWidth;\\n\\tparams.height=editable_params.LEDHeight;\\n\\tparams.light_width=Math.round((editable_params.LEDWidth * 18) / 15);\\n\\tparams.light_height=Math.round((editable_params.LEDHeight * 18) / 15);\\n\\tnew led('holder_1448309198', server, val_source, params);\\n\\n}catch(e){\\n\\talert(e);\\n}\\n\\n}catch(e){\\n\\talert(e);\\n}\\n\\n}catch(e){\\n\\talert(e);\\n}\\n</script>\"\n}");
         jScrollPane2.setViewportView(tf_Input);
@@ -348,6 +359,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel7.setText("Y Increments");
 
         tf_ios.setColumns(20);
+        tf_ios.setLineWrap(true);
         tf_ios.setRows(5);
         tf_ios.setText("10");
         jScrollPane3.setViewportView(tf_ios);
@@ -495,6 +507,20 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Widget Helper");
 
+        jButton2.setText("Clear");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Copy");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -503,10 +529,19 @@ public class MainFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(panel_Fields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(92, 92, 92)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addGap(392, 392, 392)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -515,14 +550,20 @@ public class MainFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel_Fields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(panel_Fields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -589,6 +630,30 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_generateActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        Highlighter h = tf_Output.getHighlighter();
+        h.removeAllHighlights();
+        tf_Output.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+        Highlighter h = tf_Output.getHighlighter();
+            h.removeAllHighlights();
+            int sel = tf_Output.getText().length();
+            if (sel > 0) {
+                try {
+                    h.addHighlight(0, sel, DefaultHighlighter.DefaultPainter);
+                } catch (BadLocationException ex) {
+                    System.out.println("Bad selection");
+                }
+            }
+            StringSelection stringSelection = new StringSelection(tf_Output.getText());
+            Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+            clpbrd.setContents(stringSelection, null);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton checkPos;
@@ -600,6 +665,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField ftf_startYpos;
     private javax.swing.JButton generate;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

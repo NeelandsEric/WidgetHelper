@@ -37,11 +37,24 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panel_Fields" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" pref="414" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="jScrollPane1" min="-2" pref="414" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jButton3" min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jButton2" min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jScrollPane2" min="-2" pref="414" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="392" max="-2" attributes="0"/>
@@ -53,14 +66,22 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="jLabel9" min="-2" pref="43" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="panel_Fields" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jLabel9" min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="panel_Fields" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="333" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="jButton3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" pref="171" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -80,6 +101,7 @@
         <Component class="javax.swing.JTextArea" name="tf_Output">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
           </Properties>
         </Component>
@@ -95,6 +117,7 @@
         <Component class="javax.swing.JTextArea" name="tf_Input">
           <Properties>
             <Property name="columns" type="int" value="20"/>
+            <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
             <Property name="text" type="java.lang.String" value="{&#xa;  &quot;widget_class&quot;: &quot;Digital%20Value%20-%20Leds&quot;,&#xa;  &quot;widget_subclass&quot;: &quot;10&quot;,&#xa;  &quot;w_x&quot;: &quot;`%XPOS%`&quot;,&#xa;  &quot;w_y&quot;: &quot;`%YPOS%`&quot;,&#xa;  &quot;station&quot;: &quot;147&quot;,&#xa;  &quot;io_id&quot;: &quot;`%IO_ID%`&quot;,&#xa;    &quot;code&quot;: &quot;&lt;div style=\u005c&quot;/**main_holder**/padding:5px;\u005c&quot;&gt;\u005cn\u005ct\u005cn\u005ct&lt;span id=\u005c&quot;holder_1448309198\u005c&quot; style=\u005c&quot;text-align:center; display:inline-block;\u005c&quot;&gt;&lt;/span&gt;\u005cn\u005ct&lt;span style=\u005c&quot;/**Label**/padding-left:5px; font-size:14px; font-family:Arial;\u005c&quot;&gt;&lt;!--*Label*--&gt;&lt;!----&gt;&lt;/span&gt;\u005cn&lt;/div&gt;\u005cn&lt;script&gt;try {\u005cntry {\u005cntry {\u005cn\u005cn  var server=&apos;get_value&apos;;\u005cn  var io_id=`%IO_ID%`;\u005cn\u005ctvar val_source=io_id;\u005cn\u005ctvar widget_help={\u005cn\u005ct\u005ct\u005c&quot;main_help\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;Display a digital input&apos;s value.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;Afi&#x219;eaz&#x103; valoarea unei intr&#x103;ri digitale.\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;OnColor\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The color of the LED when the input&apos;s value is 1. The colour&apos;s name should be written here!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;Culoarea LED-ului c&#xe2;nd intrarea este pe 1.  Scrieti aici numele culorii!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;60px\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;OffColor\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The color of the LED when the input&apos;s value is 0. The colour&apos;s name should be written here!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;Culoarea LED-ului c&#xe2;nd intrarea este pe 0. Scrieti aici numele culorii!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;60px\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;ErrColor\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The color of the LED when there&apos;s an error. The colour&apos;s name should be written here!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;Culoarea LED-ului c&#xe2;nd apare o eroare. Scrieti aici numele culorii!\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;60px\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;LEDHeight\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The LED&apos;s height, measured in pixels.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;&#xce;n&#x103;l&#x21b;imea LED-ului, m&#x103;surat&#x103; &#xee;n pixeli.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;30px\u005c&quot;\u005cn\u005ct\u005ct},\u005cn\u005ct\u005ct\u005c&quot;LEDWidth\u005c&quot;:{\u005cn\u005ct\u005ct\u005ct\u005c&quot;en\u005c&quot;:\u005c&quot;The LED&apos;s width, measured in pixels.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;ro\u005c&quot;:\u005c&quot;L&#x103;&#x21b;imea LED-ului, m&#x103;surat&#x103; &#xee;n pixeli.\u005c&quot;,\u005cn\u005ct\u005ct\u005ct\u005c&quot;width\u005c&quot;:\u005c&quot;30px\u005c&quot;\u005cn\u005ct\u005ct}\u005cn\u005ct};\u005cn\u005cn\u005ctvar editable_params={\u005cn\u005ct\u005ct\u005c&quot;OnColor\u005c&quot;:\u005c&quot;green\u005c&quot;,\u005cn\u005ct\u005ct\u005c&quot;OffColor\u005c&quot;:\u005c&quot;grey\u005c&quot;,\u005cn\u005ct\u005ct\u005c&quot;ErrColor\u005c&quot;:\u005c&quot;red\u005c&quot;,\u005cn\u005ct\u005ct\u005c&quot;LEDHeight\u005c&quot;:20,\u005cn\u005ct\u005ct\u005c&quot;LEDWidth\u005c&quot;:20\u005cn\u005ct};\u005cn  var params={\u005cn    \u005c&quot;color_on\u005c&quot;:\u005c&quot;green\u005c&quot;,\u005cn    \u005c&quot;color_off\u005c&quot;:\u005c&quot;grey\u005c&quot;,\u005cn    \u005c&quot;color_err\u005c&quot;:\u005c&quot;red\u005c&quot;,\u005cn    \u005c&quot;width\u005c&quot;:10,\u005cn    \u005c&quot;height\u005c&quot;:10,\u005cn    \u005c&quot;light_width\u005c&quot;:20,\u005cn    \u005c&quot;light_height\u005c&quot;:20,\u005cn\u005ct\u005ct\u005c&quot;interval\u005c&quot;:5000};\u005cn\u005ctparams.color_on=editable_params.OnColor;\u005cn\u005ctparams.color_off=editable_params.OffColor;\u005cn\u005ctparams.color_err=editable_params.ErrColor;\u005cn\u005ctparams.width=editable_params.LEDWidth;\u005cn\u005ctparams.height=editable_params.LEDHeight;\u005cn\u005ctparams.light_width=Math.round((editable_params.LEDWidth * 18) / 15);\u005cn\u005ctparams.light_height=Math.round((editable_params.LEDHeight * 18) / 15);\u005cn\u005ctnew led(&apos;holder_1448309198&apos;, server, val_source, params);\u005cn\u005cn}catch(e){\u005cn\u005ctalert(e);\u005cn}\u005cn\u005cn}catch(e){\u005cn\u005ctalert(e);\u005cn}\u005cn\u005cn}catch(e){\u005cn\u005ctalert(e);\u005cn}\u005cn&lt;/script&gt;&quot;&#xa;}" containsInvalidXMLChars="true"/>
           </Properties>
@@ -325,6 +348,7 @@
             <Component class="javax.swing.JTextArea" name="tf_ios">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
                 <Property name="text" type="java.lang.String" value="10"/>
               </Properties>
@@ -413,6 +437,22 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Widget Helper"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Clear"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Copy"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
