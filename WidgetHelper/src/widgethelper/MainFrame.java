@@ -8,8 +8,6 @@ package widgethelper;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.io.FileReader;
-import java.util.Scanner;
 import javax.swing.DefaultListModel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
@@ -42,6 +40,18 @@ public class MainFrame extends javax.swing.JFrame {
                 listString = new String[ioIds.length];
                 int row = Integer.parseInt(ftf_Rows.getText());
                 int col = Integer.parseInt(ftf_Cols.getText());
+                
+                if(row * col < ioIds.length){
+                    if(rb_down.isSelected()){
+                        row = (int) Math.ceil(Math.sqrt((double) ioIds.length));                        
+                        col = (int) Math.ceil((double) ioIds.length / row);
+                    }else {
+                        col = (int) Math.ceil(Math.sqrt((double) ioIds.length));
+                        row = (int) Math.ceil((double) ioIds.length / col);
+                    }
+                    ftf_Rows.setText(String.valueOf(row));
+                    ftf_Cols.setText(String.valueOf(col));
+                }
                 int startX = Integer.parseInt(ftf_startXpos.getText());
                 int startY = Integer.parseInt(ftf_startYpos.getText());
                 if (rb_down.isSelected()) {
@@ -164,7 +174,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         String text = tf_ios.getText();
         
-        System.out.println(text.split("\n")[0]);
         if (!text.isEmpty()) {
             list = new DefaultListModel();
 
@@ -178,7 +187,7 @@ public class MainFrame extends javax.swing.JFrame {
            
             // Generate a list
             if (ios.length == 1 && numIos != 1) {
-                System.out.println("Generate multiple IOS variable");
+                //System.out.println("Generate multiple IOS variable");
                 int startIo = Integer.parseInt(ios[0]);
                 ioIds = new int[numIos];
                 for (int i = 0; i < numIos; i++) {
@@ -186,13 +195,13 @@ public class MainFrame extends javax.swing.JFrame {
                     list.addElement(startIo + i);
                 }
             } else if (ios.length == 1) {
-                System.out.println("1 IO");
+                //System.out.println("1 IO");
                 ioIds = new int[numIos];                
                 ioIds[0] = Integer.parseInt(ios[0]);
                 list.addElement(ios[0]);
 
             } else {
-                System.out.println("Custom IOS");
+                //System.out.println("Custom IOS");
                 if(numIos > ios.length){
                     numIos = ios.length;
                     ftf_Ios.setText(String.valueOf(ios.length));
