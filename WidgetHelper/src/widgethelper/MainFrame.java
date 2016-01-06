@@ -31,6 +31,9 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    
+    
     public void update() {
         gen = false;
         if (checkPos()) {
