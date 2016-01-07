@@ -5,9 +5,21 @@
  */
 package widgethelper;
 
+import java.util.List;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
@@ -20,6 +32,8 @@ import javax.swing.text.Highlighter;
 public class MainFrame extends javax.swing.JFrame {
 
     DefaultListModel list;
+    String[] widgetModelList;
+    List<String> widgetStrings;
     String[] listString;
     int[] xInc, yInc, ioIds;
     boolean gen = false;
@@ -29,6 +43,53 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        try{
+        loadWidgets();
+        }catch (IOException e){
+            System.out.println("Error trying to open widget files");
+            e.printStackTrace();
+        }catch (URISyntaxException ee){
+            System.out.println("Error with URI Syntax");
+            ee.printStackTrace();
+        }
+    }
+    
+    private void loadWidgets() throws IOException, URISyntaxException{
+        
+        widgetStrings = new ArrayList<>();
+        String path = "/widgethelper/Widgets/";
+       
+        
+        
+        List<File> widgetList = Files.walk(Paths.get(this.getClass().getResource(path).toURI()))
+                        .filter(Files::isRegularFile)
+                        .map(Path::toFile)
+                        .collect(Collectors.toList());          
+        
+         widgetModelList = new String[widgetList.size()];
+        int count = 0;
+        Scanner scan;
+        for(File f: widgetList){
+            
+        
+            scan = new Scanner(f);
+            String totalString = "";
+            while (scan.hasNextLine()) {
+                totalString += scan.nextLine();
+            }
+            
+            scan.close();            
+            widgetStrings.add(totalString);
+            widgetModelList[count] = f.getName();
+            count++;
+
+        }
+        
+        _ComboBox_WidgetList.setModel(new DefaultComboBoxModel(widgetModelList));
+        _ComboBox_WidgetList.setSelectedIndex(5);
+        
+        
+        
     }
 
     
@@ -319,6 +380,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        _ComboBox_WidgetList = new javax.swing.JComboBox();
 
         jLabel8.setText("jLabel8");
 
@@ -537,6 +599,13 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        _ComboBox_WidgetList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Empty" }));
+        _ComboBox_WidgetList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _ComboBox_WidgetListActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -546,9 +615,6 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -556,18 +622,25 @@ public class MainFrame extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(89, 89, 89)))
-                        .addGap(26, 26, 26))))
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(_ComboBox_WidgetList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+                        .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGap(392, 392, 392)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(_ComboBox_WidgetList))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -667,8 +740,15 @@ public class MainFrame extends javax.swing.JFrame {
             clpbrd.setContents(stringSelection, null);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void _ComboBox_WidgetListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__ComboBox_WidgetListActionPerformed
+        // TODO add your handling code here:
+        tf_Input.setText(widgetStrings.get(_ComboBox_WidgetList.getSelectedIndex()));
+        
+    }//GEN-LAST:event__ComboBox_WidgetListActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox _ComboBox_WidgetList;
     private javax.swing.JButton checkPos;
     private javax.swing.ButtonGroup dirGroup;
     private javax.swing.JFormattedTextField ftf_Cols;
