@@ -11,7 +11,6 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -58,9 +57,7 @@ public class MainFrame extends javax.swing.JFrame {
         
         widgetStrings = new ArrayList<>();
         String path = "/widgethelper/Widgets/";
-       
-        
-        
+                       
         List<File> widgetList = Files.walk(Paths.get(this.getClass().getResource(path).toURI()))
                         .filter(Files::isRegularFile)
                         .map(Path::toFile)
