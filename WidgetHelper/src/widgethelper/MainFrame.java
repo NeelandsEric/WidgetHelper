@@ -10,14 +10,26 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.CodeSource;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.text.BadLocationException;
@@ -31,6 +43,7 @@ import javax.swing.text.Highlighter;
 public class MainFrame extends javax.swing.JFrame {
 
     DefaultListModel list;
+    int count;
     String[] widgetModelList;
     List<String> widgetStrings;
     String[] listString;
@@ -42,56 +55,186 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
-        try{
-        loadWidgets();
-        }catch (IOException e){
-            System.out.println("Error trying to open widget files");
-            e.printStackTrace();
-        }catch (URISyntaxException ee){
-            System.out.println("Error with URI Syntax");
-            ee.printStackTrace();
-        }
+        count = 0;
+        loadWidgets2();
+        /*
+         try {
+         loadWidgets();
+         } catch (IOException e) {
+         System.out.println("Error trying to open widget files");
+         e.printStackTrace();
+         } catch (URISyntaxException ee) {
+         System.out.println("Error with URI Syntax");
+         ee.printStackTrace();
+         }*/
     }
-    
-    private void loadWidgets() throws IOException, URISyntaxException{
-        
+
+    private void loadWidgets() throws IOException, URISyntaxException {
+
         widgetStrings = new ArrayList<>();
-        String path = "/widgethelper/Widgets/";
-                       
+        String path = "widgethelper/Widgets/";
+
         List<File> widgetList = Files.walk(Paths.get(this.getClass().getResource(path).toURI()))
-                        .filter(Files::isRegularFile)
-                        .map(Path::toFile)
-                        .collect(Collectors.toList());          
-        
-         widgetModelList = new String[widgetList.size()];
-        int count = 0;
+                .filter(Files::isRegularFile)
+                .map(Path::toFile)
+                .collect(Collectors.toList());
+
+        widgetModelList = new String[widgetList.size()];
         Scanner scan;
-        for(File f: widgetList){
-            
-        
+        for (File f : widgetList) {
+
             scan = new Scanner(f);
             String totalString = "";
             while (scan.hasNextLine()) {
                 totalString += scan.nextLine();
             }
-            
-            scan.close();            
+
+            scan.close();
             widgetStrings.add(totalString);
             widgetModelList[count] = f.getName();
             count++;
 
         }
-        
+
         _ComboBox_WidgetList.setModel(new DefaultComboBoxModel(widgetModelList));
         _ComboBox_WidgetList.setSelectedIndex(5);
-        
-        
-        
+
     }
 
-    
-    
-    
+    private void loadWidgets2() {
+        boolean ide = true;
+        String path = "Widgets/";
+        ArrayList<String> results = new ArrayList<>();
+        String dir = new File("").getAbsolutePath() + "/src/widgethelper/" + path;
+
+        try {
+            getWidgetFiles(dir, results);
+            widgetStrings = new ArrayList<>();
+            widgetModelList = new String[results.size()];
+            results.stream().forEach((s) -> {
+                try {
+                    readWidgetNormal(s);
+                } catch (FileNotFoundException e) {
+
+                    System.out.println("File not found error " + e.getMessage());
+                    System.out.println("Error trying to read " + s);
+                }
+            });
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+            ide = false;
+        }
+
+        if (!ide) {
+            CodeSource src = MainFrame.class.getProtectionDomain().getCodeSource();
+            try {
+                List<String> list = new ArrayList<>();
+                if (src != null) {
+                    URL jar = src.getLocation();
+                    ZipInputStream zip = new ZipInputStream(jar.openStream());
+                    ZipEntry ze = null;
+
+                    while ((ze = zip.getNextEntry()) != null) {
+
+                        String entryName = ze.getName();
+                        if (entryName.startsWith("widgethelper/Widgets") && entryName.endsWith(".txt")) {
+
+                            list.add("/" + entryName);
+                            //System.out.println("Added name: " + entryName);
+                        }
+                    }
+                    widgetStrings = new ArrayList<>();
+                    widgetModelList = new String[list.size()];
+                    list.stream().forEach((s) -> {
+                        readJarFile(s);
+                    });
+
+                } else {
+                    System.out.println("Src null");
+                }
+
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        _ComboBox_WidgetList.setModel(new DefaultComboBoxModel(widgetModelList));
+        _ComboBox_WidgetList.setSelectedIndex(5);
+
+    }
+
+    public void getWidgetFiles(String dirName, ArrayList<String> filePaths) throws FileNotFoundException {
+
+        File directory = new File(dirName);
+
+        if (!directory.exists()) {
+            throw new FileNotFoundException("File Not Found: " + dirName);
+        }
+
+        File[] files = directory.listFiles();
+        for (File file : files) {
+            if (file.isFile()) {
+                filePaths.add(file.getName() + "," + file.getAbsolutePath());
+            } else if (file.isDirectory()) {
+                getWidgetFiles(file.getAbsolutePath(), filePaths);
+            }
+        }
+
+    }
+
+    public void readWidgetNormal(String result) throws FileNotFoundException {
+
+        //System.out.println("Reading " + result);
+        String[] ss = result.split(",");
+        // s[0] -> File name
+        // s[1] -> File path        
+
+        String filename = ss[1];
+
+        File f = new File(filename);
+        try (Scanner scan = new Scanner(f)) {
+
+            String totalString = "";
+            while (scan.hasNextLine()) {
+                totalString += scan.nextLine();
+            }
+
+            scan.close();
+            widgetStrings.add(totalString);
+            widgetModelList[count] = f.getName();
+            count++;
+
+        }
+
+    }
+
+    /**
+     * Reads a a jar file and returns a list of strings which contain all the
+     * variable names
+     *
+     * @param result the combination of files + file paths
+     */
+    public void readJarFile(String result) {
+
+        String name = result.substring(result.lastIndexOf("/") + 1);
+
+        InputStream loc = this.getClass().getResourceAsStream(result);
+        try (Scanner scan = new Scanner(loc)) {
+
+            String totalString = "";
+            while (scan.hasNextLine()) {
+                totalString += scan.nextLine();
+            }
+
+            scan.close();
+            widgetStrings.add(totalString);
+            widgetModelList[count] = name;
+            count++;
+
+        }
+
+    }
+
     public void update() {
         gen = false;
         if (checkPos()) {
@@ -101,12 +244,12 @@ public class MainFrame extends javax.swing.JFrame {
                 listString = new String[ioIds.length];
                 int row = Integer.parseInt(ftf_Rows.getText());
                 int col = Integer.parseInt(ftf_Cols.getText());
-                
-                if(row * col < ioIds.length){
-                    if(rb_down.isSelected()){
-                        row = (int) Math.ceil(Math.sqrt((double) ioIds.length));                        
+
+                if (row * col < ioIds.length) {
+                    if (rb_down.isSelected()) {
+                        row = (int) Math.ceil(Math.sqrt((double) ioIds.length));
                         col = (int) Math.ceil((double) ioIds.length / row);
-                    }else {
+                    } else {
                         col = (int) Math.ceil(Math.sqrt((double) ioIds.length));
                         row = (int) Math.ceil((double) ioIds.length / col);
                     }
@@ -160,10 +303,10 @@ public class MainFrame extends javax.swing.JFrame {
                                 //System.out.println("Ios: " + ioIds.length + "\tCount: " + count);
                             }
                         }
-                        
+
                         startX += xIncrement;
                         startY = Integer.parseInt(ftf_startYpos.getText());
-                        
+
                     }
                 } else {
                     // right then down
@@ -212,10 +355,10 @@ public class MainFrame extends javax.swing.JFrame {
                                 //System.out.println("Ios: " + ioIds.length + "\tCount: " + count);
                             }
                         }
-                        
+
                         startX = Integer.parseInt(ftf_startXpos.getText());
                         startY += yIncrement;
-                       
+
                     }
                 }
 
@@ -234,18 +377,18 @@ public class MainFrame extends javax.swing.JFrame {
     public boolean checkIos() {
 
         String text = tf_ios.getText();
-        
+
         if (!text.isEmpty()) {
             list = new DefaultListModel();
 
             int numIos = Integer.parseInt(ftf_Ios.getText());
             String[] ios;
-            if(text.contains(",")){
+            if (text.contains(",")) {
                 ios = text.split(",");
-            }else {
+            } else {
                 ios = text.split("\n");
             }
-           
+
             // Generate a list
             if (ios.length == 1 && numIos != 1) {
                 //System.out.println("Generate multiple IOS variable");
@@ -257,21 +400,20 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             } else if (ios.length == 1) {
                 //System.out.println("1 IO");
-                ioIds = new int[numIos];                
+                ioIds = new int[numIos];
                 ioIds[0] = Integer.parseInt(ios[0]);
                 list.addElement(ios[0]);
 
             } else {
                 //System.out.println("Custom IOS");
-                if(numIos > ios.length){
+                if (numIos > ios.length) {
                     numIos = ios.length;
                     ftf_Ios.setText(String.valueOf(ios.length));
-                }else if(numIos < ios.length){
+                } else if (numIos < ios.length) {
                     numIos = ios.length;
                     ftf_Ios.setText(String.valueOf(ios.length));
                 }
-                
-                
+
                 ioIds = new int[numIos];
                 int c = 0;
                 for (String s : ios) {
@@ -670,9 +812,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
         // TODO add your handling code here:
-        
+
         update();
-        
 
         if (gen) {
 
@@ -714,33 +855,33 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_generateActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         Highlighter h = tf_Output.getHighlighter();
         h.removeAllHighlights();
         tf_Output.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
         Highlighter h = tf_Output.getHighlighter();
-            h.removeAllHighlights();
-            int sel = tf_Output.getText().length();
-            if (sel > 0) {
-                try {
-                    h.addHighlight(0, sel, DefaultHighlighter.DefaultPainter);
-                } catch (BadLocationException ex) {
-                    System.out.println("Bad selection");
-                }
+        h.removeAllHighlights();
+        int sel = tf_Output.getText().length();
+        if (sel > 0) {
+            try {
+                h.addHighlight(0, sel, DefaultHighlighter.DefaultPainter);
+            } catch (BadLocationException ex) {
+                System.out.println("Bad selection");
             }
-            StringSelection stringSelection = new StringSelection(tf_Output.getText());
-            Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clpbrd.setContents(stringSelection, null);
+        }
+        StringSelection stringSelection = new StringSelection(tf_Output.getText());
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(stringSelection, null);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void _ComboBox_WidgetListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__ComboBox_WidgetListActionPerformed
         // TODO add your handling code here:
         tf_Input.setText(widgetStrings.get(_ComboBox_WidgetList.getSelectedIndex()));
-        
+
     }//GEN-LAST:event__ComboBox_WidgetListActionPerformed
 
 
