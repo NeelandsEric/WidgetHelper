@@ -11,21 +11,15 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.FileSystem;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.CodeSource;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
@@ -219,7 +213,7 @@ public class MainFrame extends javax.swing.JFrame {
         String name = result.substring(result.lastIndexOf("/") + 1);
 
         InputStream loc = this.getClass().getResourceAsStream(result);
-        try (Scanner scan = new Scanner(loc)) {
+        try (Scanner scan = new Scanner(loc, "UTF-8")) {
 
             String totalString = "";
             while (scan.hasNextLine()) {
